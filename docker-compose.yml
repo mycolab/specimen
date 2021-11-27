@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  ncbi-blast:
+    build: .
+    hostname: ncbi-blast.${PROJECT}
+    container_name: ncbi-blast.${PROJECT}
+    environment:
+      - ADMIN_USER=admin
+      - ADMIN_PASSWORD=admin
+#    ports:
+#      - "8086:8086"
+    volumes:
+      - $HOME/data/${PROJECT}/ncbi-blast/blastdb:/blast/blastdb:rw
+      - $HOME/data/${PROJECT}/ncbi-blast/mycolab:/blast/mycolab:rw
+      - $HOME/data/${PROJECT}/ncbi-blast/fasta:/blast/fasta:rw
+
+networks:
+  default:
+    external:
+      name: ${PROJECT}

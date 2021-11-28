@@ -22,7 +22,6 @@ tags:
     url: https://mycolab.org/specimens
 paths:
   /specimen:
-
     post:
       tags:
       - specimen
@@ -39,6 +38,12 @@ paths:
         405:
           description: Invalid input
           content: {}
+        '200':
+          description: Specimen Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecimenId'
       x-codegen-request-body-name: body
   /specimen/{id}:
     put:
@@ -118,6 +123,12 @@ paths:
           content: {}
 components:
   schemas:
+    SpecimenId:
+      type: object
+      properties:
+        id:
+          type: string
+          example: a8eba8c71ab9943734bbe744a61afacc
     Observations:
       type: object
       properties:
@@ -127,6 +138,32 @@ components:
         mushroomobserver:
           type: integer
           example: 354593
+        genbank:
+          type: string
+          example: MK373018.1
+    Coordinates:
+      type: object
+      properties:
+        longitude:
+          type: string
+          example: "-124.002361"
+        latitude:
+          type: string
+          example: "41.154688"
+    Location:
+      type: object
+      properties:
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        country:
+          type: string
+          example: "United States"
+        state:
+          type: string
+          example: "California"
+        county:
+          type: string
+          example: "Humboldt County"
     Taxonomy:
       type: object
       properties:
@@ -168,21 +205,15 @@ components:
       - name
       type: object
       properties:
-#        id:
-#          type: string
-#          example: a8eba8c71ab9943734bbe744a61afacc
         name:
           type: string
           example: Cudonia Confusa
-        tube:
-          type: integer
-          example: 33
-        gel:
-          type: integer
-          example: 10
         stage:
           type: string
           example: A5
+        date:
+          type: string
+          format: date-time
         sequence:
           type: string
           example: ACTAtGttGCCTtGGCAGGCTGGCAGCAGCCTGCCGGTGGACCTCAACTCTTGAATCTCTGCtGTCTGAGTACTATATAATAGTTAAAACTTTCAACAACGGATCTCTTGGTTCTGGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCTCTGGTATTCCAGGGGGCATGCCTGTTCGAGCGTCATTACAACCCTCACGCCTAGCGTGGTCTTGGGCTCGCCCTGTAGGGCCTGCCTCAAAGTCAGTGGCGGCGTCATCTGACCCCTAAGCGTAGTAACATACACCTCGCTTTTGGGCGCTGGATGGAGGCCTGCTATGAACCCCCCATTTTACAGGTTGACCTCGGATCAGGTAGGGATACCCGCTGAACTTAAG
@@ -190,6 +221,8 @@ components:
           $ref: '#/components/schemas/Taxonomy'
         observations:
           $ref: '#/components/schemas/Observations'
+        location:
+          $ref: '#/components/schemas/Location'
         status:
           type: string
           description: Specimen status

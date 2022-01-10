@@ -13,5 +13,4 @@ ADD . /app
 WORKDIR /app
 
 # start container
-ENTRYPOINT ["python3", "/app/app.py"]
-CMD ["--api"]
+ENTRYPOINT ["python3", "app.py"]

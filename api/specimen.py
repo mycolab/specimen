@@ -1,5 +1,15 @@
+import os
+import etcd
 import hashlib
 import json
+
+ETCD_HOST = os.environ.get('ETCD_HOST', '127.0.0.1')
+ETCD_PORT = os.environ.get('ETCD_PORT', 2379)
+
+
+def etc_client() -> etcd.Client:
+    client = etcd.Client(host=ETCD_HOST, port=ETCD_PORT)
+    return client
 
 
 def get_id(body: dict) -> str:
@@ -8,6 +18,7 @@ def get_id(body: dict) -> str:
 
 
 def post(body: dict = None, **kwargs):
+    client = etc_client()
     id = get_id(body)
     resp = {
         'id': id

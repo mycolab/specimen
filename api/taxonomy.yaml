@@ -1,0 +1,46 @@
+Prokaryota:
+  rank: life
+  members:
+    Eukaryota:
+      rank: domain
+      members:
+        Fungi:
+          rank: kingdom
+          members:
+            Dikarya:
+              rank: subkingdom
+              members:
+                Ascomycota:
+                  rank: phylum
+                  members:
+                    Pezizomycotina:
+                      rank: subphylum
+                      members:
+                        Leotimycetes:
+                          rank: class
+                          members:
+                            Rhytismatales:
+                              rank: order
+                              members:
+                                Cudoniaceae:
+                                  rank: family
+                                  members:
+                                    Cudonia:
+                                      rank: genus
+                                      members:
+                                        circinans:
+                                          rank: species
+                                        clandestida:
+                                          rank: species
+                                        confusa:
+                                          rank: species
+                                        grisea:
+                                          rank: species
+                                        helvelloides:
+                                          rank: species
+                                        japonica:
+                                          rank: species
+                                        osterwaldii:
+                                          rank: species
+                                        sichuanensis:
+                                          rank: species

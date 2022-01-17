@@ -1,3 +1,5 @@
 connexion
 connexion[swagger-ui]
-xmltojson
+python-etcd
+pandas
+openpyxl
